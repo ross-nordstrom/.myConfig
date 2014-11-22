@@ -25,11 +25,11 @@ apt-get install -y vim
 # Setup rc files
 echo " " >> ~/.bashrc
 echo "## Source .myConfig files" >> ~/.bashrc
-echo "source .myConfig/.bash*" >> ~/.bashrc
+echo "for f in \$HOME/.myConfig/.bash*; do source $f; done" >> ~/.bashrc
 
 echo " " >> ~/.vimrc
-echo "## Source .myConfig files" >> ~/.vimrc
-echo "source .myConfig/.vimrc" >> ~/.vimrc
+echo "\" Source .myConfig files" >> ~/.vimrc
+echo "source \$HOME/.myConfig/.vimrc" >> ~/.vimrc
 
 # Install HTOP memory visualization/mgmt
 apt-get install -y htop
