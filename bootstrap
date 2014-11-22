@@ -25,7 +25,7 @@ apt-get install -y vim
 # Setup rc files
 echo " " >> ~/.bashrc
 echo "## Source .myConfig files" >> ~/.bashrc
-echo "for f in \$HOME/.myConfig/.bash*; do source $f; done" >> ~/.bashrc
+echo "for f in \$HOME/.myConfig/.bash*; do source \$f; done" >> ~/.bashrc
 
 echo " " >> ~/.vimrc
 echo "\" Source .myConfig files" >> ~/.vimrc
