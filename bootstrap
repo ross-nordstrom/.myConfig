@@ -1,0 +1,88 @@
+# Only run if we're running Ubuntu
+
+if hash lsb_release 2>/dev/null; then
+  if test "${Ubuntu#*`lsb_release -i`}" != "Ubuntu"; then
+    echo 'detected ubuntu: installing base dependencies'
+  else
+    exit 0
+  fi
+else
+  exit 0
+fi
+
+set -e
+
+apt-get update
+apt-get upgrade -y
+apt-get update
+
+# Install git
+apt-get install -y git
+
+# Install vim
+apt-get install -y vim
+
+# Setup rc files
+echo " " >> ~/.bashrc
+echo "## Source .myConfig files" >> ~/.bashrc
+echo "source .myConfig/.bash*" >> ~/.bashrc
+
+echo " " >> ~/.vimrc
+echo "## Source .myConfig files" >> ~/.vimrc
+echo "source .myConfig/.vimrc" >> ~/.vimrc
+
+# Install HTOP memory visualization/mgmt
+apt-get install -y htop
+
+# Install Heroku Toolbelt
+wget -qO- https://toolbelt.heroku.com/install-ubuntu.sh | sh
+
+# Install F.lux - save your eyes
+### NOTE: Doesn't support 13.10 yet, install straight from:
+###	http://ppa.launchpad.net/kilian/f.lux/ubuntu/pool/main/f/fluxgui/fluxgui_1.1.8_all.deb
+# add-apt-repository ppa:kilian/f.lux
+# apt-get update
+# apt-get -y install fluxgui
+
+# Install Node.js
+apt-get update
+apt-get install -y python-software-properties python g++ make
+add-apt-repository ppa:chris-lea/node.js
+apt-get update
+apt-get install -y nodejs
+
+# Install Rails
+# [Setup Ruby on Rails on Ubuntu 13.10](http://gorails.com/setup/ubuntu/13.10)
+apt-get update
+apt-get install -y git-core curl zlib1g-dev build-essential libssl-dev libreadline-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt1-dev
+   
+# Install RVM
+apt-get install -y libgdbm-dev libncurses5-dev automake libtool bison libffi-dev
+curl -L https://get.rvm.io | bash -s stable
+source ~/.rvm/scripts/rvm
+rvm install 2.0.0-p247
+rvm use 2.0.0-p247 --default
+ruby -v
+
+# Install Rails
+gem install rails
+
+   # I needed this for Capybara to work (bundle update/install)
+   apt-get install -y qt4-dev-tools libqt4-dev libqt4-core libqt4-gui
+
+# Install PostgreSQL
+sh -c "echo 'deb http://apt.postgresql.org/pub/repos/apt/ precise-pgdg main' > /etc/apt/sources.list.d/pgdg.list"
+wget --quiet -O - http://apt.postgresql.org/pub/repos/apt/ACCC4CF8.asc | sudo apt-key add -
+apt-get update
+apt-get install -y postgresql-common -t saucy
+apt-get install -y postgresql-9.2 libpq-dev
+
+# Nvidia drivers
+apt-get install -y nvidia-current
+
+# Oh yea, login to Heroku
+heroku login
+
+echo 'now install Rails on your own!'
+exit 0
+
