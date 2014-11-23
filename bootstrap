@@ -22,6 +22,9 @@ apt-get install -y git
 # Install vim
 apt-get install -y vim
 
+# Install Vundle, the VIM package manager
+git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+
 # Setup rc files
 echo " " >> ~/.bashrc
 echo "## Source .myConfig files" >> ~/.bashrc
