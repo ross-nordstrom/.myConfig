@@ -48,44 +48,49 @@ wget -qO- https://toolbelt.heroku.com/install-ubuntu.sh | sh
 # apt-get -y install fluxgui
 
 # Install Node.js
-apt-get update
-apt-get install -y python-software-properties python g++ make
-add-apt-repository ppa:chris-lea/node.js
-apt-get update
 apt-get install -y nodejs
 
 # Install Rails
 # [Setup Ruby on Rails on Ubuntu 13.10](http://gorails.com/setup/ubuntu/13.10)
 apt-get update
-apt-get install -y git-core curl zlib1g-dev build-essential libssl-dev libreadline-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt1-dev
+apt-get install -y git-core curl zlib1g-dev build-essential libssl-dev libreadline-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt1-dev libcurl4-openssl-dev python-software-properties
    
 # Install RVM
 apt-get install -y libgdbm-dev libncurses5-dev automake libtool bison libffi-dev
 curl -L https://get.rvm.io | bash -s stable
 source ~/.rvm/scripts/rvm
-rvm install 2.0.0-p247
-rvm use 2.0.0-p247 --default
+echo "source ~/.rvm/scripts/rvm" >> ~/.bashrc
+rvm install 2.1.3
+rvm use 2.1.3 --default
 ruby -v
+# and tell Rubygems not to install the documentation for each package locally
+echo "gem: --no-ri --no-rdoc" > ~/.gemrc
 
 # Install Rails
 gem install rails
 
-   # I needed this for Capybara to work (bundle update/install)
-   apt-get install -y qt4-dev-tools libqt4-dev libqt4-core libqt4-gui
+#   # I needed this for Capybara to work (bundle update/install)
+#   apt-get install -y qt4-dev-tools libqt4-dev libqt4-core libqt4-gui
+rails -v
 
 # Install PostgreSQL
 sh -c "echo 'deb http://apt.postgresql.org/pub/repos/apt/ precise-pgdg main' > /etc/apt/sources.list.d/pgdg.list"
 wget --quiet -O - http://apt.postgresql.org/pub/repos/apt/ACCC4CF8.asc | sudo apt-key add -
 apt-get update
-apt-get install -y postgresql-common -t saucy
-apt-get install -y postgresql-9.2 libpq-dev
+apt-get install -y postgresql-common
+apt-get install -y postgresql-9.3 libpq-dev
 
-# Nvidia drivers
-apt-get install -y nvidia-current
+## Nvidia drivers
+#apt-get install -y nvidia-current
+
+# Install Gemfury
+gem install gemfury
 
 # Oh yea, login to Heroku
 heroku login
 
-echo 'now install Rails on your own!'
+# Force a login to Gemfury
+fury list --as flukenetworks
+
 exit 0
 
