@@ -7,7 +7,7 @@ sudo apt-get install git
 ssh-keygen -t -rsa -C "<YOUR_EMAIL@EXAMPLE.COM>"
 
 # ...
-# MANUAL!  Upload your public key to Github
+# MANUAL!  Upload your public key to Github and Heroku
 # ...
 
 # Clone this repo and run it
