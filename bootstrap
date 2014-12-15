@@ -49,6 +49,11 @@ wget -qO- https://toolbelt.heroku.com/install-ubuntu.sh | sh
 
 # Install Node.js
 apt-get install -y nodejs
+node --version
+
+# Install NPM
+apt-get install -y npm
+npm --version
 
 # Install Rails
 # [Setup Ruby on Rails on Ubuntu 13.10](http://gorails.com/setup/ubuntu/13.10)
@@ -68,9 +73,6 @@ echo "gem: --no-ri --no-rdoc" > ~/.gemrc
 
 # Install Rails
 gem install rails
-
-#   # I needed this for Capybara to work (bundle update/install)
-#   apt-get install -y qt4-dev-tools libqt4-dev libqt4-core libqt4-gui
 rails -v
 
 # Install PostgreSQL
@@ -83,8 +85,13 @@ apt-get install -y postgresql-9.3 libpq-dev
 ## Nvidia drivers
 #apt-get install -y nvidia-current
 
+# Install Travis CLI
+gem install travis --no-rdoc --no-ri
+travis version
+
 # Install Gemfury
 gem install gemfury
+fury version
 
 # Oh yea, login to Heroku
 heroku login
@@ -92,5 +99,6 @@ heroku login
 # Force a login to Gemfury
 fury list --as flukenetworks
 
+echo "You might also want to install RubyMine, Google Chrome (+Beta), 
 exit 0
 
