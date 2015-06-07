@@ -135,3 +135,5 @@ export PATH="$PATH:$HOME/.node/lib/node_modules/karma/bin"
 PATH=$PATH:$HOME/.rvm/bin 
 # Load RVM into a shell session *as a function*
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" 
+
+PATH=$PATH:$HOME/npm/bin
