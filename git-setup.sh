@@ -20,9 +20,12 @@ fi
 echo -e "\nTell git pull to NOT automatically merge from the current branch"
 git config --global branch.autosetupmerge false
 
+echo -e "\nUse the 'current' strategy for Git pushes"
+git config --global push.default current
+
 # Don't do this for now because it doesn't work with older versions of git
-echo -e "\nUse the new Git 2.0 default setting of simple push (safest for beginners)"
-git config --global push.default simple
+#echo -e "\nUse the new Git 2.0 default setting of simple push (safest for beginners)"
+#git config --global push.default simple
 
 echo -e "\nDefault git editor is vim"
 git config --global core.editor "vim"
