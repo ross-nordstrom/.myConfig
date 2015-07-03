@@ -136,4 +136,28 @@ PATH=$PATH:$HOME/.rvm/bin
 # Load RVM into a shell session *as a function*
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" 
 
-PATH=$PATH:$HOME/npm/bin
+# Highlight make warnings and errors
+make()
+{
+    pathpat="(/[^/]*)+:[0-9]+"
+    ccred=$(echo -e "33[0;31m")
+    ccyellow=$(echo -e "33[0;33m")
+    ccend=$(echo -e "33[0m")
+    /usr/bin/make "$@" 2>&1 | sed -E -e "/[Ee]rror[: ]/ s%$pathpat%$ccred&$ccend%g" -e "/[Ww]arning[: ]/ s%$pathpat%$ccyellow&$ccend%g"
+    return ${PIPESTATUS[0]}
+}
+
+
+
+# If this is an xterm set the title to user@host:dir
+PS1="\[\e]0;${debian_chroot:+($debian_chroot)} \W\a\]$PS1"
+ 
+## Source .myConfig files
+for f in $HOME/.myConfig/.bash*; do source $f; done
+
+# added by travis gem
+[ -f /home/ross/.travis/travis.sh ] && source /home/ross/.travis/travis.sh
+PATH=$PATH:/usr/bin
+PATH=$PATH:/usr/lib/node_modules/karma/bin
+PATH=$PATH:/usr/bin
+PATH=$PATH:/usr/lib/node_modules/karma/bin
