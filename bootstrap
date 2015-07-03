@@ -26,11 +26,12 @@ apt-get update
 
 # Install git
 apt-get install -y git
-git config --global push.default simple
+
+# Setup git prefs
+./git-setup.sh
 
 # Install vim
 apt-get install -y vim
-git config --global core.editor "vim"
 
 # Install Vundle, the VIM package manager
 git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
