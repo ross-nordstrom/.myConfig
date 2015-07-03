@@ -4,9 +4,13 @@ if hash lsb_release 2>/dev/null; then
   if test "${Ubuntu#*`lsb_release -i`}" != "Ubuntu"; then
     echo 'detected ubuntu: installing base dependencies'
   else
+    echo 'not ubuntu: aborting'
     exit 0
   fi
+elif [ -f /etc/debian_version ]; then
+  echo 'detected debain: installing base dependencies. WARNING: may not work completely'
 else
+  echo 'not ubuntu or debian: aborting'
   exit 0
 fi
 
