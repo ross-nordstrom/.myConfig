@@ -147,17 +147,6 @@ make()
     return ${PIPESTATUS[0]}
 }
 
-
-
 # If this is an xterm set the title to user@host:dir
 PS1="\[\e]0;${debian_chroot:+($debian_chroot)} \W\a\]$PS1"
  
-## Source .myConfig files
-for f in $HOME/.myConfig/.bash*; do source $f; done
-
-# added by travis gem
-[ -f /home/ross/.travis/travis.sh ] && source /home/ross/.travis/travis.sh
-PATH=$PATH:/usr/bin
-PATH=$PATH:/usr/lib/node_modules/karma/bin
-PATH=$PATH:/usr/bin
-PATH=$PATH:/usr/lib/node_modules/karma/bin
