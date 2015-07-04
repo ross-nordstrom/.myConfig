@@ -45,7 +45,7 @@ echo " " >> ~/.vimrc
 echo "\" Source .myConfig files" >> ~/.vimrc
 echo "source \$HOME/.myConfig/.vimrc" >> ~/.vimrc
 
-if [ $MIN ]; then
+if [ -n $MIN ]; then
 	echo 'Minimal install done.'
 	exit 0
 fi
