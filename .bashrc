@@ -93,6 +93,7 @@ alias l='ls -CF'
 alias got='git'
 alias goit='git'
 alias giot='git'
+alias gti='git'
 alias gits='git s'
 
 # Add an "alert" alias for long running commands.  Use like so:
