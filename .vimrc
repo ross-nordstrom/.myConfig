@@ -38,3 +38,4 @@ filetype plugin indent on    " required
 :set copyindent
 :set visualbell
 :set noerrorbells
+:set nowrap
