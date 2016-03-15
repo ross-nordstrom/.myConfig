@@ -191,8 +191,10 @@ bar {
         status_command i3status
 }
 
-# RDN - Lock screen
-bindsym $mod+Control+l exec i3lock -t -i /usr/local/src/mtn.png
+# RDN - Logout, Lock, Suspend
+bindsym $mod+Control+o exec --no-startup-id "i3-msg exit"
+bindsym $mod+Control+l exec --no-startup-id i3lock -t -i /usr/local/src/lock.png
+bindsym $mod+Control+p exec --no-startup-id "systemctl suspend"
 
 # RDN - Variety
 exec --no-startup-id /opt/extras.ubuntu.com/variety/bin/variety
