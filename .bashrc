@@ -109,6 +109,7 @@ if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
 
+
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
@@ -129,8 +130,6 @@ export PATH="/usr/local/src:$PATH"
 ### Add NPM modules to path
 export PATH="$PATH:$HOME/.node/bin"
 export PATH="$PATH:$HOME/.node/lib/node_modules/**/bin"
-export PATH="$PATH:$HOME/.node/lib/node_modules/karma-ng-html2js-preprocessor"
-export PATH="$PATH:$HOME/.node/lib/node_modules/karma/bin"
 
 ## Add RVM to PATH for scripting
 PATH=$PATH:$HOME/.rvm/bin 
