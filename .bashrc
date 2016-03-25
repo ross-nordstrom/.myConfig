@@ -124,12 +124,18 @@ fi
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
 
-### Add flux to path
+### Add local src to path
 export PATH="/usr/local/src:$PATH"
+
+### Add IntelliJ to path
+export PATH="/opt/idea-IU-145.258.11/bin:$PATH"
 
 ### Add NPM modules to path
 export PATH="$PATH:$HOME/.node/bin"
 export PATH="$PATH:$HOME/.node/lib/node_modules/**/bin"
+
+### Add Cloud to path
+export PATH="$PATH:$HOME/Development/misc/Cloud/shared"
 
 ## Add RVM to PATH for scripting
 PATH=$PATH:$HOME/.rvm/bin 
