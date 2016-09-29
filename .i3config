@@ -230,6 +230,7 @@ exec --no-startup-id xrandr --output eDP1 --mode 1920x1x1080 --left-of HDMI1
 
 # RDN - Change screens
 bindsym $mod+Control+1 exec --no-startup-id xrandr --output DP1 --auto --output HDMI1 --auto --left-of DP1 --output eDP1 --mode 1920x1080 --left-of HDMI1 
+bindsym $mod+Control+2 exec --no-startup-id xrandr --output DP1 --auto --output HDMI1 --auto --left-of DP1 --output eDP1 --mode auto --left-of HDMI1 
 
 # RDN - Change main audio sink
 bindsym $mod+Control+9 exec --no-startup-id pacmd set-default-sink alsa_output.usb-Logitech_Logitech_G35_Headset-00-Headset.analog-stereo
