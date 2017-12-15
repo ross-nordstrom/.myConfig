@@ -11,7 +11,8 @@
 
 
 # RDN - Make multiple monitors work
-force_xinerama yes
+# RDN 2 - This breaks on my laptop
+#force_xinerama yes
 
 set $mod Mod4
 
@@ -200,6 +201,9 @@ bindsym $mod+Control+o exec --no-startup-id "i3-msg exit"
 bindsym $mod+Control+l exec --no-startup-id i3lock -t -i /usr/local/src/lock.png
 bindsym $mod+Control+p exec --no-startup-id "systemctl suspend"
 
+# RDN - Network
+exec --no-startup-id nm-applet
+
 # RDN - Variety
 exec --no-startup-id /opt/extras.ubuntu.com/variety/bin/variety
 
@@ -207,8 +211,8 @@ exec --no-startup-id /opt/extras.ubuntu.com/variety/bin/variety
 bindsym XF86AudioMute exec --no-startup-id "pactl set-sink-mute 0 toggle; pactl set-sink-mute 1 toggle; pactl set-sink-mute alsa_output.pci-0000_00_1b.0.analog-stereo toggle"
 
 # RDN - Volume 
-bindsym XF86AudioRaiseVolume exec --no-startup-id "pactl set-sink-volume 0 +3%; pactl set-sink-volume 1 +3%; pactl set-sink-volume 2 +3%; pactl set-sink-volume 3 +3%; pactl set-sink-volume 4 +3%; pactl set-sink-volume 5 +3%; pactl set-sink-volume 6 +3%; pactl set-sink-mute 0 0; pactl set-sink-mute 1 0; pactl set-sink-volume alsa_output.pci-0000_00_1b.0.analog-stereo +3%"
-bindsym XF86AudioLowerVolume exec --no-startup-id "pactl set-sink-volume 0 -3%; pactl set-sink-volume 1 -3%; pactl set-sink-volume 2 -3%; pactl set-sink-volume 3 -3%; pactl set-sink-volume 4 -3%; pactl set-sink-volume 5 -3%; pactl set-sink-volume 6 -3%; pactl set-sink-mute 0 0; pactl set-sink-mute 1 0; pactl set-sink-volume alsa_output.pci-0000_00_1b.0.analog-stereo -3%"
+bindsym XF86AudioRaiseVolume exec --no-startup-id "pactl set-sink-volume 0 +3%; pactl set-sink-volume 1 +3%; pactl set-sink-volume 2 +3%; pactl set-sink-volume 3 +3%; pactl set-sink-volume 4 +3%; pactl set-sink-volume 5 +3%; pactl set-sink-volume 6 +3%; pactl set-sink-volume 7 +3%; pactl set-sink-mute 0 0; pactl set-sink-mute 1 0; pactl set-sink-volume alsa_output.pci-0000_00_1b.0.analog-stereo +3%"
+bindsym XF86AudioLowerVolume exec --no-startup-id "pactl set-sink-volume 0 -3%; pactl set-sink-volume 1 -3%; pactl set-sink-volume 2 -3%; pactl set-sink-volume 3 -3%; pactl set-sink-volume 4 -3%; pactl set-sink-volume 5 -3%; pactl set-sink-volume 6 -3%; pactl set-sink-volume 7 -3%; pactl set-sink-mute 0 0; pactl set-sink-mute 1 0; pactl set-sink-volume alsa_output.pci-0000_00_1b.0.analog-stereo -3%"
 
 # RDN - Sreen brightness controls
 bindsym XF86MonBrightnessUp exec xbacklight -inc 5 # increase screen brightness
@@ -224,21 +228,18 @@ bindsym XF86AudioPrev exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2
 bindsym --release Print exec scrot -s -e 'mv $f ~/Downloads/.'
 
 # RDN - Startup programs
-exec --no-startup-id variety
 exec --no-startup-id xrandr --output eDP1 --mode 1920x1x1080 --left-of HDMI1
 
 
 # RDN - Change screens
 bindsym $mod+Control+1 exec --no-startup-id xrandr --output DP1 --auto --output HDMI1 --auto --left-of DP1 --output eDP1 --mode 1920x1080 --left-of HDMI1 
 bindsym $mod+Control+2 exec --no-startup-id xrandr --output DP1 --auto --output HDMI1 --auto --left-of DP1 --output eDP1 --mode auto --left-of HDMI1 
+bindsym $mod+Control+8 exec --no-startup-id xrandr --output DVI-1-0 --auto --left-of DVI-2-1 --output DVI-2-1 --mode 1920x1080 --left-of eDP1 --output eDP1 --mode 1920x1080
+bindsym $mod+Control+9 exec --no-startup-id xrandr --output DVI-1-0 --auto --left-of DVI-2-1 --output DVI-2-1 --mode 1920x1080 --left-of eDP1 --output eDP1 --off
 
 # RDN - Change main audio sink
-bindsym $mod+Control+9 exec --no-startup-id pacmd set-default-sink alsa_output.usb-Logitech_Logitech_G35_Headset-00-Headset.analog-stereo
-bindsym $mod+Control+0 exec --no-startup-id pacmd set-default-sink alsa_output.pci-0000_00_1b.0.analog-stereo
-
-# RDN - Firefox and Chrome live on workspace 1
-assign [class="^Firefox$"] 1
-assign [class="^Google Chrome$"] 1
+bindsym $mod+Control+5 exec --no-startup-id pacmd set-default-sink alsa_output.usb-Logitech_Logitech_G35_Headset-00-Headset.analog-stereo
+bindsym $mod+Control+6 exec --no-startup-id pacmd set-default-sink alsa_output.pci-0000_00_1b.0.analog-stereo
 
 # RDN - Turn on WiFi
 bindsym 248 exec --no-startup-id nmcli r wifi off
