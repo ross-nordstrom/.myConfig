@@ -86,8 +86,9 @@ git config --global --unset-all alias.p
 git config --global alias.p pull
 
 echo "git lol ==> Better log"
+git config --global core.pager 'less -S'
 git config --global --unset-all alias.lol
-git config --global alias.lol "log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%ci) %C(bold blue)<%an>%Creset' --abbrev-commit --date=short --all -10"
+git config --global alias.lol "log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%ci) %C(bold blue)<%an>%Creset' --abbrev-commit --date=short --all"
 
 echo "git unstash ==> Unstash (git stash pop)"
 git config --global --unset-all alias.unstash
